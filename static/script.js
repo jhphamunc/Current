@@ -55,6 +55,7 @@ function addTickerToGrid(ticker) {
 }
 
 function updatePrices() {
+    console.log("Fetching stock prices for:", tickers);
     tickers.forEach(function (ticker) {
         $.ajax({
             url: '/get_stock_data',
@@ -92,7 +93,7 @@ function updatePrices() {
                     flashClass = 'gray-flash';
                 }
                 lastPrices[ticker] = data.currentPrice;
-
+                console.log("flash updated price");
                 $(`#${ticker}`).addClass(flashClass);
                 setTimeout(function() {
                     $(`#${ticker}`).removeClass(flashClass);
